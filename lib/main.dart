@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import './UI/first_screen.dart';
+import './UI/second_screen.dart';
+import './UI/detail_screen.dart';
+import './UI/my_custom_form.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +24,14 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      // home: MyHomePage(),
+      initialRoute: "/",
+      routes: {
+        "/" : (context) => MyCustomForm(),
+        "/first" : (context) => FirstScreen(),
+        "/second" : (context) => SecondScreen(),
+        "/detail" : (context) => DetailScreen(),
+      },
     );
   }
 }
@@ -28,7 +39,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return DefaultTabController(
       length: 3,
       child: Scaffold(
