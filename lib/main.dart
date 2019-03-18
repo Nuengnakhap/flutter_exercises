@@ -7,6 +7,7 @@ import './UI/dropdown_screen.dart';
 import './UI/http-json.dart';
 import './UI/list_view_posts.dart';
 import './UI/read_write_screen.dart';
+import './UI/todo_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       // home: MyHomePage(),
       initialRoute: "/",
       routes: {
-        "/" : (context) => ReadWriteScreen(),
+        "/" : (context) => TodoScreen(),
         "/datajson" : (context) => HttpJsonScreen(),
         "/first" : (context) => FirstScreen(),
         "/second" : (context) => SecondScreen(),
