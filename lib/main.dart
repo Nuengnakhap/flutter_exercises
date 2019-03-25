@@ -8,6 +8,8 @@ import './UI/http-json.dart';
 import './UI/list_view_posts.dart';
 import './UI/read_write_screen.dart';
 import './UI/todo_screen.dart';
+import './UI/login_screen.dart';
+import './UI/register_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,11 +34,12 @@ class MyApp extends StatelessWidget {
       // home: MyHomePage(),
       initialRoute: "/",
       routes: {
-        "/" : (context) => TodoScreen(),
+        "/" : (context) => LoginScreen(),
         "/datajson" : (context) => HttpJsonScreen(),
         "/first" : (context) => FirstScreen(),
         "/second" : (context) => SecondScreen(),
         "/detail" : (context) => DetailScreen(),
+        "/register" : (context) => RegisterScreen(),
       },
     );
   }
