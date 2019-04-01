@@ -9,6 +9,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _formkey = GlobalKey<FormState>();
   FirebaseAuth _auth = FirebaseAuth.instance;
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: <Widget>[
               TextFormField(
+                controller: email,
                 decoration: InputDecoration(labelText: "Email"),
                 keyboardType: TextInputType.emailAddress,
                 validator: (value) {
@@ -26,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
               TextFormField(
+                controller: password,
                   decoration: InputDecoration(labelText: "Password"),
                   obscureText: true,
                   validator: (value) {
@@ -40,7 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         _auth
                             .signInWithEmailAndPassword(
-                                email: '60070005@kmitl.ac.th', password: 'password')
+                                email: email.text,
+                                password: password.text)
                             .then((FirebaseUser user) {
                           if (user.isEmailVerified) {
                             print('go to home screen');
