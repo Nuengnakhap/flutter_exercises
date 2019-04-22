@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lab_i/UI/counter_screen.dart';
+import 'package:lab_i/UI/maps_screen.dart';
 import './UI/first_screen.dart';
 import './UI/second_screen.dart';
 import './UI/detail_screen.dart';
@@ -12,10 +14,50 @@ import './UI/login_screen.dart';
 import './UI/register_screen.dart';
 import './UI/book_screen.dart';
 import './UI/list_book.dart';
+import 'package:lab_i/bloc/counter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+  final CounterBloc _counterBloc = CounterBloc();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: Colors.blue,
+      ),
+      home: BlocProvider<CounterBloc>(
+        bloc: _counterBloc,
+        child: CounterScreen(),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _counterBloc.dispose();
+    super.dispose();
+  }
+}
+
+class MyApp2 extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -36,12 +78,12 @@ class MyApp extends StatelessWidget {
       // home: MyHomePage(),
       initialRoute: "/",
       routes: {
-        "/" : (context) => ListBook(),
-        "/datajson" : (context) => HttpJsonScreen(),
-        "/first" : (context) => FirstScreen(),
-        "/second" : (context) => SecondScreen(),
-        "/detail" : (context) => DetailScreen(),
-        "/register" : (context) => RegisterScreen(),
+        "/": (context) => MapScreen(),
+        "/datajson": (context) => HttpJsonScreen(),
+        "/first": (context) => FirstScreen(),
+        "/second": (context) => SecondScreen(),
+        "/detail": (context) => DetailScreen(),
+        "/register": (context) => RegisterScreen(),
       },
     );
   }
