@@ -15,12 +15,14 @@ class ListViewPost extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: <Widget>[
-              ListTile(
-                title: Text(this.posts.elementAt(index).title),
-                subtitle: Text(this.posts.elementAt(index).body),
-                onTap: () {
-                  print("tab on ${this.posts.elementAt(index).id}");
-                },
+              Card(
+                child: ListTile(
+                  title: Text(this.posts.elementAt(index).title),
+                  subtitle: Image.network(this.posts.elementAt(index).thumbnailUrl),
+                  onTap: () {
+                    print("tab on ${this.posts.elementAt(index).id}");
+                  },
+                ),
               )
             ],
           );

@@ -40,46 +40,54 @@ class DropdownScreenState extends State<DropdownScreen> {
       appBar: AppBar(
         title: Text('Dropdowm Screen'),
       ),
-      body: Column(
-        children: <Widget>[
-          _image == null
-              ? new Text('No image selected.')
-              : new Image.file(_image),
-          InputDecorator(
-            decoration: InputDecoration(
-              icon: Icon(Icons.person),
-              labelText: 'Passenger',
-            ),
-            isEmpty: _passenger == '',
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: _passenger,
-                isDense: true,
-                onChanged: (String value) {
-                  setState(() {
-                    _passenger = value;
-                  });
-                },
-                items: _passengers.map((String value) {
-                  return DropdownMenuItem(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            children: <Widget>[
+              _image == null
+                  ? new Text('No image selected.')
+                  : new Image.file(_image),
+              InputDecorator(
+                decoration: InputDecoration(
+                  icon: Icon(Icons.person),
+                  labelText: 'Passenger',
+                ),
+                isEmpty: _passenger == '',
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: _passenger,
+                    isDense: true,
+                    onChanged: (String value) {
+                      setState(() {
+                        _passenger = value;
+                      });
+                    },
+                    items: _passengers.map((String value) {
+                      return DropdownMenuItem(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
               ),
-            ),
+              DateTimePickerFormField(
+                inputType: InputType.date,
+                format: formats[inputType],
+                decoration: InputDecoration(labelText: 'Date/Time'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FloatingActionButton(
+                  onPressed: getImage,
+                  tooltip: 'Pick Image',
+                  child: Icon(Icons.add_a_photo),
+                ),
+              )
+            ],
           ),
-          DateTimePickerFormField(
-            inputType: InputType.date,
-            format: formats[inputType],
-            decoration: InputDecoration(labelText: 'Date/Time'),
-          ),
-          FloatingActionButton(
-            onPressed: getImage,
-            tooltip: 'Pick Image',
-            child: Icon(Icons.add_a_photo),
-          )
-        ],
+        ),
       ),
     );
   }

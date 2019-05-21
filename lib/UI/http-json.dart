@@ -9,7 +9,7 @@ import './list_view_posts.dart';
 
 class HttpJsonScreen extends StatelessWidget {
   Future<List<Post>> loadPost() async {
-    Response resp = await get('https://jsonplaceholder.typicode.com/posts');
+    Response resp = await get('https://jsonplaceholder.typicode.com/photos');
     List<dynamic> data = json.decode(resp.body);
     List<Post> posts = List();
     data.forEach((d) {

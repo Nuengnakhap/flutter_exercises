@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lab_i/UI/counter_screen.dart';
+import 'package:lab_i/UI/homepage.dart';
 import 'package:lab_i/UI/maps_screen.dart';
 import './UI/first_screen.dart';
 import './UI/second_screen.dart';
@@ -17,7 +18,7 @@ import './UI/list_book.dart';
 import 'package:lab_i/bloc/counter_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp2());
 
 class MyApp extends StatefulWidget {
   @override
@@ -73,18 +74,20 @@ class MyApp2 extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       // home: MyHomePage(),
       initialRoute: "/",
       routes: {
-        "/": (context) => MapScreen(),
+        "/": (context) => HomePage(),
         "/datajson": (context) => HttpJsonScreen(),
         "/first": (context) => FirstScreen(),
         "/second": (context) => SecondScreen(),
         "/detail": (context) => DetailScreen(),
         "/register": (context) => RegisterScreen(),
+        "/dropdown": (context) => DropdownScreen(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
